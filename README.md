@@ -41,7 +41,7 @@ This project is more an study case using Flask framework, now I'm approaching so
 2)
 
 ```bash
-make docker-run
+$ make docker-run
 sudo docker run --rm -p 5000:5000 --name flask_app -d flask_app:0.2.0
 c573c441dfe36c19ffc1d8c2c165bb1c9a571f9628ee9c6ed6b91dd0777af062
 sleep 2 && curl http://localhost:5000/status
@@ -72,10 +72,6 @@ sleep 2 && curl http://localhost:5000/status
 ```bash
 $ http http://localhost:5000/status
 HTTP/1.0 200 OK
-Content-Length: 354
-Content-Type: application/json
-Date: Sun, 17 Sep 2017 22:30:08 GMT
-Server: Werkzeug/0.12.2 Python/3.5.2
 
 {
     "pool": {
@@ -101,14 +97,11 @@ Server: Werkzeug/0.12.2 Python/3.5.2
 * run the sample job
 
 ```
-for X in $(seq 1 2); do http http://localhost:5000/run; done
+$ http http://localhost:5000/run
 HTTP/1.0 200 OK
 
 Two jobs was launched in background!
 
-HTTP/1.0 200 OK
-
-Two jobs was launched in background!
 ```
 
 * Detailed the thread status
@@ -116,10 +109,6 @@ Two jobs was launched in background!
 ```
 http http://localhost:5000/status/details
 HTTP/1.0 200 OK
-Content-Length: 1204
-Content-Type: application/json
-Date: Sun, 17 Sep 2017 23:14:18 GMT
-Server: Werkzeug/0.12.2 Python/3.5.4
 
 {
    "pool": {
@@ -161,7 +150,7 @@ Server: Werkzeug/0.12.2 Python/3.5.4
 
 ```
 
-* run 19 sample jobs
+* run 19 sample jobs - each run will schedulle 2 jobs, so 38 jobs will be schedulled
 
 ```bash
 for X in $(seq 1 19); do http http://localhost:5000/run; done
