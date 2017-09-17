@@ -1,7 +1,7 @@
 APP_NAME := flask_app
 APP_PORT := 5000
 VERSION := $(shell cat VERSION)
-DOCKER_REGISTRY := 'mtulio/pub'
+DOCKER_REGISTRY := 'mtulio/flask_sample'
 MODULE := "none"
 
 # #############
