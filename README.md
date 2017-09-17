@@ -1,6 +1,8 @@
 # flask-complex-sample
 A complex Flask sample application that run asynchronous jobs using multithread and report some metrics.
 
+[![Docker Build Statu](https://img.shields.io/docker/build/mtulio/flask_sample.svg)](https://hub.docker.com/r/mtulio/flask_sample/)
+
 ## Overview
 
 This project is more an study case using Flask framework, now I'm approaching some concepts:
