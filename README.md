@@ -12,6 +12,7 @@ This project is more an study case using Flask framework, now I'm approaching so
 * Metrics*
 * Metrics report to Librato*
 * Metrics report to Zabbix*
+* Metrics report to Prometheus*
 
 ### Metrics (TODO)
 
@@ -19,26 +20,28 @@ This project is more an study case using Flask framework, now I'm approaching so
 * Keep Flask metric
 * Report custom metrics to Librato
 * Report custom metrics to Zabbix
+* Report metrics to Prometheus as an exporter path
 
 ## USAGE
+
+### Installing 
 
 * Install the dependencies
 
 `make setup`
 
+* Run in docker
+ * Build
+ 
+ `make docker-build`
+
+### Running
+
 * Run the application localy
 
 `make run`
 
-* Run in docker
- * Build
  * Run
-
-1)
-
-`make docker-build`
-
-2)
 
 ```bash
 $ make docker-run
@@ -67,7 +70,9 @@ sleep 2 && curl http://localhost:5000/status
 
 ```
 
-* Simple status - only counters and sys info
+### Interact
+
+* Check simple status - only counters and sys info
 
 ```bash
 $ http http://localhost:5000/status
@@ -104,7 +109,7 @@ Two jobs was launched in background!
 
 ```
 
-* Detailed the thread status
+* show details of the thread status
 
 ```
 http http://localhost:5000/status/details
