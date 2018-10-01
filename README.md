@@ -1,45 +1,40 @@
 # flask-complex-sample
-A complex Flask sample application that run asynchronous jobs using multithread and report some metrics.
+This is a complex sample Flask application that run asynchronous jobs using multithreading. One of the features of this application is being able to report some metrics.
 
-[![Docker Build Statu](https://img.shields.io/docker/build/mtulio/flask_sample.svg)](https://hub.docker.com/r/mtulio/flask_sample/)
+[![Docker Build Status](https://img.shields.io/docker/build/mtulio/flask_sample.svg)](https://hub.docker.com/r/mtulio/flask_sample/)
 
 ## Overview
 
-This project is more an study case using Flask framework, now I'm approaching some concepts:
-* Future
-* Queues
-* Multithread
-* Metrics*
-* Metrics report to Librato*
-* Metrics report to Zabbix*
+This project is a case study using the Flask framework. Right now I pretend to have these features in this app:
+* Future ✔
+* Queues ✔
+* Multithread ✔
+* Metrics
+* Metrics report to Librato
+* Metrics report to Zabbix
 
-### Metrics (TODO)
+
+### TODO's (Metrics)
 
 * Keep internal metrics of all of the queues
 * Keep Flask metric
 * Report custom metrics to Librato
 * Report custom metrics to Zabbix
 
-## USAGE
+## Usage
 
-* Install the dependencies
+1. You need to make sure you have `make` installed on your machine, then simply install the dependencies by running:
 
-`make setup`
+* `make setup`
 
-* Run the application localy
+2. Run the application localy
 
-`make run`
+  * `make run`
 
-* Run in docker
- * Build
- * Run
-
-1)
-
-`make docker-build`
-
-2)
-
+2. Runnning in docker 
+   - To run the Dockerized version you need to Build and Run the app : 
+    `make docker-build`
+   - Then you need to run `make docker-run` which should have this result:
 ```bash
 $ make docker-run
 sudo docker run --rm -p 5000:5000 --name flask_app -d flask_app:0.2.0
@@ -67,7 +62,7 @@ sleep 2 && curl http://localhost:5000/status
 
 ```
 
-* Simple status - only counters and sys info
+3. You can check the status( only counters and sys info) by running the `http` command on this link `http://localhost:5000/status`
 
 ```bash
 $ http http://localhost:5000/status
@@ -94,7 +89,7 @@ HTTP/1.0 200 OK
 }
 ```
 
-* run the sample job
+4. You can run a sample job by running the `http` command on this link: `http://localhost:5000/run`
 
 ```
 $ http http://localhost:5000/run
@@ -104,7 +99,7 @@ Two jobs was launched in background!
 
 ```
 
-* Detailed the thread status
+5.You can check a detailed status about the threads by running `http` command on this link `http://localhost:5000/status/details`
 
 ```
 http http://localhost:5000/status/details
@@ -150,15 +145,16 @@ HTTP/1.0 200 OK
 
 ```
 
-* run 19 sample jobs - each run will schedulle 2 jobs, so 38 jobs will be schedulled
+### Other Options 
+* You can run 19 sample jobs at the same time, in which every run will schedulle 2 jobs, so 38 jobs will be schedulled by running : 
 
 ```bash
 for X in $(seq 1 19); do http http://localhost:5000/run; done
 ```
 
-* kill and remove the container
+* You can kill  and remove this container by runnning :
 
-`make docker-kill`
+ `make docker-kill`
 
 
 ## TODO
